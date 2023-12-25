@@ -1,0 +1,8 @@
+1. Segmented Sieve
+2. Full Power
+3. Modulo expression (https://codeforces.com/blog/entry/72527)
+4. Pigeonhole principle
+5. Catalon Number
+6. Inclusion - Exclusion principle
+
+Que. - Find factorial of large number in modulo of 1e9+7
