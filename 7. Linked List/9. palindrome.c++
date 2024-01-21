@@ -107,5 +107,5 @@ bool isPalindrome2(Node *head){
     return true;
 
     // Time : O(N)
-    // Space : O(N)
+    // Space : O(1)
 }
