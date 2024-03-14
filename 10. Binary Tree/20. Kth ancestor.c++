@@ -20,28 +20,25 @@ class Node{
 //      any such ancestor then return -1.
 
 /***Using Vector to Store Path***/
-// Time : O(N+K)
+// Time : O(N)
 // Space : O(N)
 
 bool solve(Node *root, int targetNodeVal, vector<int> &ancestor) {
     if(root == NULL)
         return false;
 
-    if(root -> data == targetNodeVal) {
-        ancestor.push_back(root -> data);
-        return true;
-    }
+    ancestor.push_back(root -> data);
 
-    if(solve(root -> left, targetNodeVal, ancestor)){
-        ancestor.push_back(root -> data);
+    if(root -> data == targetNodeVal)
         return true;
-    }
 
-    if(solve(root -> right, targetNodeVal, ancestor)){
-        ancestor.push_back(root -> data);
+    if(solve(root -> left, targetNodeVal, ancestor))
         return true;
-    }
 
+    if(solve(root -> right, targetNodeVal, ancestor))
+        return true;
+
+    ancestor.pop_back();
     return false;
 }
 
@@ -50,10 +47,8 @@ int findKthAncestor(Node *root, int targetNodeVal, int k) {
 
     solve(root, targetNodeVal, ancestor);
 
-    for(int i = 1; i < ancestor.size(); i++) {
-        if(i == k)
-            return ancestor[i];
-    }
+    if(ancestor.size() >= k+1)
+        return ancestor[ancestor.size()-k-1];
 
     return -1;
 }
