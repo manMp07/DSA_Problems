@@ -20,7 +20,7 @@ class Node{
 // Time : O(N) Bcoz we used mapping to reduce time from N^2
 // Space : O(N)
 
-Node* solve(vector<int> in, vector<int> pre, map<int, int> nodeToIndex, int &index,
+Node* solve(vector<int> in, vector<int> pre, unordered_map<int, int> nodeToIndex, int &index,
             int inStart, int inEnd, int n) {
     
     // base case
@@ -43,9 +43,9 @@ Node* solve(vector<int> in, vector<int> pre, map<int, int> nodeToIndex, int &ind
 
 Node *buildBinaryTree(vector<int> &inorder, vector<int> &preorder){
     int n = preorder.size();
-    int index = 0;
+    int index = 0; // index must be passed by reference in this type of questions
     
-    map<int, int> nodeToIndex;
+    unordered_map<int, int> nodeToIndex;
     
     // create nodes to index mapping 
     for(int i = 0; i < n; i++) {
