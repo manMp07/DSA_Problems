@@ -21,9 +21,17 @@ class Node{
 
 Node* findPred(Node* curr) {
     Node* pred = curr -> left;
-    while(pred -> right != NULL && pred -> right != curr) {
+    while(pred -> right != NULL && pred -> right != curr)
         pred = pred -> right;
-    }
+
+    return pred;
+}
+
+Node* findPredPost(Node* curr){
+    Node* pred = curr -> right;
+    while(pred -> left != NULL && pred -> left != curr)
+        pred = pred -> left;
+
     return pred;
 }
 
@@ -59,33 +67,36 @@ vector<int> morrisInorder(Node* root) {
     return ans;
 }
 
-vector<int> morrisPreorder(Node* root){
+vector<int> preorderTraversal(Node* root){
     vector<int> ans;
-
-    if(root == NULL)
-        return ans;
-
     Node* curr = root;
 
-    while(curr != NULL) {
-        ans.push_back(curr -> data);
-
-        if(curr -> left == NULL) {
+    while(curr != NULL){
+        if(curr -> left == NULL){
+            ans.push_back(curr -> data);
             curr = curr -> right;
         }
         else{
             Node* pred = findPred(curr);
-
-            if(pred -> right == NULL) {
-                pred -> right = curr -> right;
+            if(pred -> right == NULL){
+                ans.push_back(curr -> data);
+                pred -> right = curr;
                 curr = curr -> left;
+            }
+            else{
+                pred -> right = NULL;
+                curr = curr -> right;
             }
         }
     }
+
     return ans;
 }
 
 vector<int> morrisPostorder(Node* root){
+    /*PostOrder = LRN
+    So we'll find NRL and it's reverse is the answer*/
+
     vector<int> ans;
     Node* curr = root;
  
@@ -95,7 +106,7 @@ vector<int> morrisPostorder(Node* root){
             curr = curr -> left;
         }
         else {
-            Node* pred = findPred(curr);
+            Node* pred = findPredPost(curr);
 
             if (pred -> left == NULL) {
                 ans.push_back(curr -> data);
@@ -108,5 +119,7 @@ vector<int> morrisPostorder(Node* root){
             }
         }
     }
+
+    reverse(ans.begin(), ans.end());
     return ans;
 }
