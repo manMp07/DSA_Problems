@@ -12,7 +12,7 @@ vector<int> twoNonRepeatingElements(vector<int> arr, int n){
     for(int i = 0; i < n; i++)
         allXor = allXor ^ arr[i];
 
-    long leftMost = (allXor & (allXor-1)) & allXor;
+    long leftMost = (allXor & (allXor-1)) ^ allXor;
 
     int bucket1 = 0, bucket2 = 0;
     for(int i = 0; i < n; i++){
