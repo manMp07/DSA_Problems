@@ -1,12 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-//Que.- Given two strings word1 and word2, return the minimum number of operations
-//      required to convert word1 to word2.
-//      You have the following three operations permitted on a word:
-//      1. Insert a character
-//      2. Delete a character
-//      3. Replace a character
+//Que.- Given an input string (s) and a pattern (p), implement wildcard pattern matching
+//      with support for '?' and '*' where:
+//      '?' Matches any single character.
+//      '*' Matches any sequence of characters (including the empty sequence).
+//      The matching should cover the entire input string (not partial).
 
 /*DP on Strings Pattern*/
 
