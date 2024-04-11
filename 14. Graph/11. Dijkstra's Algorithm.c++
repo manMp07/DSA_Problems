@@ -6,7 +6,8 @@ using namespace std;
 //      Return an array that stores the distance(sum of weights) of a shortest path
 //      from vertex 'Source' to all vertices.
 
-// Time : O(E*logV)
+// Time : O((E+V)*logV) ~ O(E*logV) : By using set/minHeap
+// Time : O(VlogV + E) : By Using Fibonacci Heap..
 // Space : O(V+E)
 
 /***Using Set***/
