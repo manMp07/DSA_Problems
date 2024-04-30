@@ -43,16 +43,23 @@ vector<int> dijkstra(vector<vector<int>> &edges, int v, int e, int source) {
 
         // traverse on neighbours
         for(auto neightbour : adjList[node]) {
-            if(nodeDistance + neightbour.second < distance[neightbour.first]){
+            int adjNode = neightbour.first;
+            int edgW = neightbour.second;
 
-                /*auto record = st.find({distance[neightbour.first], neightbour.first});
+            if(nodeDistance + edgW < distance[adjNode]){
+
+                auto record = st.find( {distance[adjNode], adjNode} );
                 //if record found, then erase it
                 if(record != st.end())
-                    st.erase(record);*/
+                    st.erase(record);
+
+                /* /*Another way of erasing existing entry in set
+                if(distance[adjNode] != INT_MAX)
+                    st.erase({distance[adjNode], adjNode}); */
                     
                 // distance update
-                distance[neightbour.first] = nodeDistance + neightbour.second;
-                st.insert({distance[neightbour.first], neightbour.first});
+                distance[adjNode] = nodeDistance + edgW;
+                st.insert( {distance[adjNode], adjNode} );
             }
         }
     }
