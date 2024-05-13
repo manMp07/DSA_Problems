@@ -8,6 +8,11 @@ using namespace std;
 // Time : O(V+E)
 // Space : O(V+E)
 
+//Note: In DFS-Topological we don't have the control which is the next element that would
+//      be visited.
+//      ex. If we're told to give answer of topological sort in lexicographical order, we have
+//          to give answer using BFS(Kahn's Algorithm).
+
 vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
     // create adj list
     unordered_map<int, list<int>> adjList;
