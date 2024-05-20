@@ -70,3 +70,57 @@ vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pa
 
     return ans;
 }
+
+/*Using Min-Heap*/
+//Time : O(ElogE + ElogE); while loop is running E times & for all iteration we're taking element
+//                         from min-heap which takes logE time ---> ElogE
+//                         And in For loop we're traversing to all edges & pushing into min-Heap
+//                         which takes ---> ElogE
+//Space : O(3*V + E)
+
+vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pair<int, int>, int>> &g){
+    vector<pair<int,int>> adjList[n+1];
+    for(int i = 0; i < m; i++){
+        int u = g[i].first.first;
+        int v = g[i].first.second;
+        int wt = g[i].second;
+
+        adjList[u].push_back({v, wt});
+        adjList[v].push_back({u, wt});
+    }
+
+    vector<bool> mst(n+1, false);
+    vector<int> parent(n+1, -1);
+    vector<int> key(n+1, INT_MAX);
+    priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>> > pq;
+
+    pq.push({0, 1});
+    key[1] = 0;
+
+    while(!pq.empty()){
+        int u = pq.top().second;
+        pq.pop();
+        if(mst[u] == true)
+            continue;
+
+        mst[u] = true;
+
+        for(auto adjNode : adjList[u]){
+            int v = adjNode.first;
+            int wt = adjNode.second;
+
+            if(!mst[v] && wt < key[v]){
+                pq.push({wt, v});
+                key[v] = wt;
+                parent[v] = u;
+            }
+        }
+    }
+
+    vector<pair<pair<int, int>, int>> ans;
+    for(int v = 2; v <= n; v++) {
+        ans.push_back({{parent[v], v}, key[v]});
+    }
+
+    return ans;
+}
