@@ -79,6 +79,7 @@ bool twoSumInBST(Node* root, int target) {
 }
 
 //*** Two Pointers on BST itself ***
+// Prerequisite : Problem "7_0.BST Iterator.c++"
 // Time : O(N)
 // Space : O(H)
 
@@ -111,7 +112,7 @@ bool twoSumInBST(Node* root, int target) {
         if (val1 + val2 == target)
             return true;
 
-        // If the sum of values < target, then move to the next greatest closer value.
+        // If the sum of values < target, then move start++.
         if (val1 + val2 < target){
             currNode = start.top()->right;
             start.pop();
@@ -121,7 +122,7 @@ bool twoSumInBST(Node* root, int target) {
             }
         }
 
-        // If the sum of values > target value, then move to the next smallest closer value .
+        // If the sum of values > target value, then move end--.
         else{
             currNode = end.top()->left;
             end.pop();
