@@ -3,7 +3,7 @@ using namespace std;
 
 //Que.- Given an array of integers. Find the K-th largest sum of subarray.
 
-// Time : O(N*N*logN)
+// Time : O(N*N*logK)
 // Space : O(K)
 
 int getKthLargest(vector<int> &arr, int k){
