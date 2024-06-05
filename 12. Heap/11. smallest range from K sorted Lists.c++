@@ -28,6 +28,10 @@ class compare{
 };
 
 int kSorted(vector<vector<int>> &arr, int k, int n) {
+    // Idea is to check all ranges in minHeap itself, as minHeap will always be containing
+    // at least one element from all k lists(Until any list gets completed).
+    // We want minimum of all (pq.maxi - pq.mini + 1).
+
     priority_queue<Node*, vector<Node*>, compare> minHeap;
     int maxElement = INT_MIN;
 
