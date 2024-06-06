@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Weekly Conest 399
+// Weekly Conest 399 (Que.2)
 // DATE : 26 May 2024
 
 //Que.- Given a string word, compress it using the following algorithm:

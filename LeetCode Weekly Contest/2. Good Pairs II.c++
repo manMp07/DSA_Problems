@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Weekly Conest 399
+// Weekly Conest 399 (Que.3)
 // DATE : 26 May 2024
 
 //Que.- You are given 2 integer arrays nums1 and nums2 of lengths n and m respectively. You

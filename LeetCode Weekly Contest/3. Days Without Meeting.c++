@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// Weekly Conest 400
+// Weekly Conest 400 (Que.2)
 // DATE : 02 June 2024
 
 //Que.- You are given a positive integer days representing the total number of days an
