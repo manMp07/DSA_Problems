@@ -58,31 +58,4 @@ int minimumJumps(vector<int> &arr, int n){
     return dp[0];;
 }
 
-/***Linear Time Solution***/
-// Time : O(N)
-// Space : O(1)
-
-int minimumJumps(vector<int> &arr, int n){
-    if(n == 1)
-        return 0;
-    if(arr[0] == 0)
-        return -1;
-
-    int maxReach = arr[0];
-    int jumpsTaken = 1;
-    int stepsLeft = arr[0];
-
-    for(int i = 1; i < n-1; i++){
-        maxReach = max(maxReach, arr[i] + i);
-        stepsLeft--;
-        if(stepsLeft == 0){
-            jumpsTaken++;
-            if(i >= maxReach)
-                return -1;
-            else
-                stepsLeft = maxReach - i;
-        }
-    }
-
-    return jumpsTaken;
-}
+// Greedy Approach is in "16.Greedy" folder "Que.10"
