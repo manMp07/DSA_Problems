@@ -8,28 +8,22 @@ using namespace std;
 //Space : O(L)
 
 int lengthOfLongestSubstring(string &s) {
-    if(s.length() == 0)
-        return 0;
+    int n = s.length();
         
     unordered_map<char, int> mp;
-    int i = 0, j = 0;
 
-    int currLen = 0;
-    int maxLen = INT_MIN;
-    while(j < s.length()) {
-        char ch = s[j];
+    int maxLen = 0;
+    int lo = 0;
+    for(int hi = 0; hi < n; hi++){
+        char ch = s[hi];
 
-        //present in old window
-        if(mp.count(ch) && mp[ch] >= i){
-            i = mp[ch]+1;
-            currLen = j-i;
-        }
+        // present in old window
+        if(mp.count(ch) && mp[ch] >= lo)
+            lo = mp[ch] + 1;
+        
+        mp[ch] = hi;
 
-        mp[ch] = j;
-        currLen++;
-        j++;
-
-        maxLen = max(maxLen, currLen);
+        maxLen = max(maxLen, hi-lo+1);
     }
 
     return maxLen;
