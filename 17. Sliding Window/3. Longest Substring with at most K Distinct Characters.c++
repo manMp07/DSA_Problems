@@ -4,8 +4,6 @@ using namespace std;
 //Que.- You are given a string 'str' and an integer ‘K’. Your task is to find the length
 //      of the largest substring with at most ‘K’ distinct characters.
 
-/** Submit Krna baaki hai */
-
 // Time : O(N) + O(N)
 // Space : O(256)
 
