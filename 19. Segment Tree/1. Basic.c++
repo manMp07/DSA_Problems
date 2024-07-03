@@ -56,9 +56,9 @@ class SegTree {
         int mid = (lo + hi) >> 1;
         
         if(idx <= mid)
-            query(2*i + 1, lo, mid, idx, val);
+            update(2*i + 1, lo, mid, idx, val);
         else
-            query(2*i + 2, mid+1, hi, idx, val);
+            update(2*i + 2, mid+1, hi, idx, val);
             
         seg[i] = min(seg[2*i + 1], seg[2*i + 2]);
     }
@@ -95,7 +95,7 @@ int main() {
             cin >> idx >> val;
             a[idx] = val;
             
-            sg.update(0, 0, n-1, idx, val); // this is not working...
+            sg.update(0, 0, n-1, idx, val);
             sg.print();
         }
     }
@@ -105,6 +105,6 @@ int main() {
 6 3
 1 3 2 0 4 5
 1 0 2 ---> Ans = 1
-2 0 6 ---> It is not changing
+2 0 6 ---> Update
 1 0 2 ---> Ans = 2
 */
