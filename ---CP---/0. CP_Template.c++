@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/****************************************************/
 #define Code ios_base::sync_with_stdio(false);
 #define By cin.tie(NULL);
 #define Asquare cout.tie(NULL)
@@ -8,12 +9,12 @@ using namespace std;
 #define ff first
 #define ss second
 #define fl(i,s,n) for(ll i = s; i < n; i++)
+#define rfl(i,n,s) for(ll i = n; i >= s; i--)
 #define pb(x) push_back(x)
 #define py cout << "YES\n";
 #define pn cout << "NO\n";
 #define srt(a) sort(a.begin(), a.end())
 #define prtArr(a,s,n) fl(i,s,n) cout << a[i] << " ";
-
 typedef vector<int> vi;
 typedef vector<vector<int>> vii;
 typedef vector<ll> vll;
@@ -35,6 +36,7 @@ bool isPrime(ll n){
     while(i*i <= n){ if(n%i == 0 || n % (i+2) == 0) return false; i += 6; }
     return true;
 }
+/*********************************************************/
 
 int solve(int a[], int n){
     return 0;
