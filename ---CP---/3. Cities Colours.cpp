@@ -23,7 +23,7 @@ void solve(){
     */
     
     vector<int> nextSame(n);
-    umii mp;
+    unordered_map<int,int> mp;
     rfl(i,n-1,0){
         if(mp.find(c[i]) == mp.end())
             nextSame[i] = -1;
