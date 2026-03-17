@@ -55,19 +55,47 @@ void iarr(vi& a, int n){
 /*********************************************************/
 
 void solve(){
-    int n; cin >> n;
-    vi a(n);
-    iarr(a,n);
+    int n, k;
+    cin >> n >> k;
+    ll x, a, b, c;
+    cin >> x >> a >> b >> c;
+
+    vll arr(n);
+    arr[0] = x;
+    fl(i,1,n)
+        arr[i] = (a * arr[i-1] + b) % c;
+
+    ll ans = 0;
+
+    deque<ll> dq;
+    
+    for(int i = 0; i < k; i++){
+        while(!dq.empty() && arr[dq.back()] > arr[i])
+            dq.pop_back();
+
+        dq.push_back(i);
+    }
+
+    ans = arr[dq.front()];
+
+    for(int i = k; i < n; i++){
+        while(!dq.empty() && arr[dq.back()] > arr[i])
+            dq.pop_back();
+
+        dq.push_back(i);
+
+        if(dq.front() <= i-k)
+            dq.pop_front();
+
+        ans = ans ^ arr[dq.front()];
+    }
+
+    print(ans);
 }
 
 int main() {
     Code By MAN;
-    int t;
-    cin >> t;
-    
-    while(t--){
-        solve();
-    }
+    solve();
     
     return 0;
 }
